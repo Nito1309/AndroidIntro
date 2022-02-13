@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.androidintro.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_reminder"
+        android:name="com.example.androidintro.ui.age.AgeFragment"
+        android:label="@string/title_age"
+        tools:layout="@layout/fragment_age" />
 
     <fragment
         android:id="@+id/navigation_notifications"

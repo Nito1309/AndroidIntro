@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">AndroidIntro</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_age">Your age in:</string>
     <string name="title_notifications">Notifications</string>
+    <string name="calculate">Calculate</string>
+    <string name="default_age">You have 0 years</string>
+
+    <string-array name="timeUnits">
+        <item>Hours</item>
+        <item>Days</item>
+        <item>Weeks</item>
+        <item>Months</item>
+    </string-array>
 </resources>
