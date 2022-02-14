@@ -7,7 +7,7 @@ import android.arch.lifecycle.ViewModel
 class AgeViewModel : ViewModel() {
 
     private val noReminders = MutableLiveData<String>().apply {
-        value = "Calculate your age in:"
+        value = "Your age in:"
     }
     val text: LiveData<String> = noReminders
 }
