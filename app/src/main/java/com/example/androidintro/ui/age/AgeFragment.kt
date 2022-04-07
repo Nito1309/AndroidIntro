@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.support.v4.app.Fragment
 import android.arch.lifecycle.ViewModelProvider
+import android.icu.util.TimeUnit.values
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.widget.*
@@ -44,10 +45,10 @@ class AgeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         }
 
         val adapter = ArrayAdapter.createFromResource(
-                requireContext(),
-                R.array.timeUnits,
-                android.R.layout.simple_spinner_item
+                requireContext(),R.array.timeUnits,R.layout.spinner_theme
         )
+
+
 
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
@@ -93,6 +94,7 @@ class AgeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         txtBirthDate!!.text = presentDate.toString()
 
         spinner = binding.spnTimeUnit
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
         spinner.onItemSelectedListener = this
@@ -108,9 +110,6 @@ class AgeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         }
         return root
     }
-
-
-
 
     private fun updateDateInView() {
         val dateFormat = "MM/dd/yyyy"

@@ -5,6 +5,12 @@
     <string name="title_notifications">Notifications</string>
     <string name="calculate">Calculate</string>
     <string name="default_age">You have 0 years</string>
+    <string name="name">Name:</string>
+    <string name="email">Email:</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="birthdate">BirthDate:</string>
+    <string name="address">Address:</string>
+    <string name="tel">Tel:</string>
 
     <string-array name="timeUnits">
         <item>Hours</item>
