@@ -4,7 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+//import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.androidintro.databinding.ActivityAddContactBinding
 import com.example.androidintro.ui.home.ContactViewModel as ContactViewModel
 
