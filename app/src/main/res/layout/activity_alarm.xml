@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".AlarmActivity.AlarmActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/age_border">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/selectedTime"
+            android:text="--:--"
+            android:textAlignment="center"
+            android:textColor="@color/purple_700"
+            android:textSize="60sp"
+            android:layout_margin="20dp"
+            android:clickable="false"
+            android:textIsSelectable="false"
+            android:focusable="false"/>
+
+        <Button
+            android:id="@+id/btnSelectTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="30dp"
+            android:background="@drawable/age_border"
+            android:backgroundTint="@color/purple_700"
+            android:padding="15dp"
+            android:text="@string/selecttime"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btnSetAlarm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/age_border"
+            android:backgroundTint="@color/purple_700"
+            android:padding="15dp"
+            android:text="@string/set_alarm"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            />
+
+    </LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

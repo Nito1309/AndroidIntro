@@ -11,6 +11,8 @@
     <string name="birthdate">BirthDate:</string>
     <string name="address">Address:</string>
     <string name="tel">Tel:</string>
+    <string name="selecttime">Select Time</string>
+    <string name="set_alarm">Set Alarm</string>
 
     <string-array name="timeUnits">
         <item>Hours</item>
