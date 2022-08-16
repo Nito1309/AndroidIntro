@@ -3,21 +3,28 @@ package com.example.androidintro
 import android.R.attr
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.hardware.biometrics.BiometricManager
 import android.os.Bundle
 //import android.support.v7.app.AppCompatActivityctivity
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricPrompt
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.androidintro.databinding.ActivityMainBinding
+import com.example.androidintro.ui.map.MapFragment
+import java.util.concurrent.Executor
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var executor:Executor
+    private lateinit var biometricPrompt: BiometricPrompt
+    private lateinit var promptInfo: BiometricPrompt.PromptInfo
     companion object{
         const val REQUEST_CODE_LOCATION = 0
     }
@@ -33,7 +40,32 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
 
         navView.setupWithNavController(navController)
+        executor = ContextCompat.getMainExecutor(this)
+
+        biometricPrompt = BiometricPrompt(this@MainActivity, executor, object : BiometricPrompt.AuthenticationCallback(){
+            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                super.onAuthenticationError(errorCode, errString)
+                Toast.makeText(this@MainActivity,"Authentication Failed :$errString", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                super.onAuthenticationSucceeded(result)
+                Toast.makeText(this@MainActivity, "Authentication Succeeded!", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onAuthenticationFailed() {
+                super.onAuthenticationFailed()
+                //Toast.makeText(this@MainActivity, "Authentication Failed :(", Toast.LENGTH_SHORT).show()
+            }
+        })
+        promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Login")
+            .setSubtitle("Use your fingerprint")
+            .setNegativeButtonText("Cancel")
+            .build()
+
         enableMyLocation()
+        biometricPrompt.authenticate(promptInfo)
     }
 
     private fun isPermissionsGranted() = ContextCompat.checkSelfPermission(

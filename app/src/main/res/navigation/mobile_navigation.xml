@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.androidintro.ui.map.MapFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
 </navigation>
