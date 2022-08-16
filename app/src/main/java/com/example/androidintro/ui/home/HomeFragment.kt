@@ -10,24 +10,33 @@ import android.widget.TextView
 //import android.support.v4.app.Fragment
 //import android.arch.lifecycle.ViewModelProvider
 import android.content.Intent
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.Button
 //import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidintro.AddContactActivity
-import com.example.androidintro.MainActivity
+import com.example.androidintro.R
 import com.example.androidintro.databinding.FragmentHomeBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val contactData = ArrayList<ContactViewModel>()
     private val adapter = ContactRecyclerAdapter(contactData)
+    private var addClicked = false
+    private val rotateOpen: Animation by lazy { AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_open_anim)}
+    private val rotateClose: Animation by lazy { AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_close_anim)}
+    private val fromBottom: Animation by lazy { AnimationUtils.loadAnimation(requireContext(), R.anim.from_bottom_anim)}
+    private val toBottom: Animation by lazy { AnimationUtils.loadAnimation(requireContext(), R.anim.to_bottom_anim)}
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
     @SuppressLint("NotifyDataSetChanged")
     fun addContact(contact : ContactViewModel){
         contactData.add(contact)
@@ -48,17 +57,58 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+        val btnAdd = binding.btnAdd
         val btnAddContact = binding.btnAddContact
+        val btnAddAlarm = binding.btnAddAlarm
         val recyclerView = binding.recycleView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
+        btnAdd.setOnClickListener {
+            activity?.let {
+                onAddButtonClicked(btnAdd,btnAddContact,btnAddAlarm)
+            }
+        }
         btnAddContact.setOnClickListener {
             activity?.let {
                 val intent = Intent (it, AddContactActivity::class.java)
                 startActivityForResult(intent, 1)
             }
         }
+        btnAddAlarm.setOnClickListener {
+            activity?.let {
+                Toast.makeText(requireContext(), "btnAlarm", Toast.LENGTH_LONG).show()
+            }
+        }
         return root
+    }
+
+    private fun onAddButtonClicked(btnAdd: FloatingActionButton, btnAddContact: FloatingActionButton, btnAddAlarm: FloatingActionButton){
+        setVisility(addClicked, btnAddContact, btnAddAlarm)
+        setAnimation(addClicked, btnAdd, btnAddContact, btnAddAlarm)
+        addClicked = !addClicked
+    }
+
+    private fun setAnimation(clicked: Boolean, btnAdd: FloatingActionButton, btnAddContact: FloatingActionButton, btnAddAlarm: FloatingActionButton) {
+        if(!clicked){
+            btnAddContact.startAnimation(fromBottom)
+            btnAddAlarm.startAnimation(fromBottom)
+            btnAdd.startAnimation(rotateOpen)
+        }else{
+            btnAddContact.startAnimation(toBottom)
+            btnAddAlarm.startAnimation(toBottom)
+            btnAdd.startAnimation(rotateClose)
+        }
+    }
+
+    @SuppressLint("RestrictedApi")
+    private fun setVisility(clicked: Boolean, btnAddContact: FloatingActionButton, btnAddAlarm: FloatingActionButton) {
+        if(!clicked){
+            btnAddContact.visibility = View.VISIBLE
+            btnAddAlarm.visibility = View.VISIBLE
+        }else{
+            btnAddContact.visibility = View.INVISIBLE
+            btnAddAlarm.visibility = View.INVISIBLE
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

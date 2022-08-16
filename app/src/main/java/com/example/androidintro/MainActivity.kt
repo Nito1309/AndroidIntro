@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         enableMyLocation()
-        biometricPrompt.authenticate(promptInfo)
     }
 
     private fun isPermissionsGranted() = ContextCompat.checkSelfPermission(
@@ -102,6 +101,11 @@ class MainActivity : AppCompatActivity() {
             }
             else -> {}
         }
+    }
+
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        biometricPrompt.authenticate(promptInfo)
     }
 
 }
