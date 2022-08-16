@@ -1,10 +1,7 @@
 package com.example.androidintro.AlarmActivity
 
 import android.annotation.SuppressLint
-import android.app.AlarmManager
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -51,6 +48,8 @@ class AlarmActivity : AppCompatActivity() {
             AlarmManager.RTC_WAKEUP,calendar.timeInMillis,pendingIntent
         )
         Toast.makeText(this,"Alarm set succesfully", Toast.LENGTH_SHORT).show()
+//        setResult(Activity.RESULT_OK,calendar.timeInMillis)
+//        finish()
     }
 
     private fun cancelAlarm(){

@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when(requestCode){
             REQUEST_CODE_LOCATION -> if(!grantResults.isNotEmpty() && grantResults[0]==PackageManager.PERMISSION_GRANTED){
                 Toast.makeText(this, "Para activar la localización ve a ajustes y acepta los permisos", Toast.LENGTH_SHORT).show()
