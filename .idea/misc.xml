@@ -14,9 +14,15 @@
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1985" />
         <entry key="app/src/main/res/drawable/ic_reminder_24.xml" value="0.3275" />
         <entry key="app/src/main/res/drawable/spinner_text.xml" value="0.3275" />
+        <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.24163319946452477" />
+        <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.28203125" />
         <entry key="app/src/main/res/layout/activity_add_contact.xml" value="0.3567708333333333" />
         <entry key="app/src/main/res/layout/activity_alarm.xml" value="0.20742753623188406" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.3740942028985507" />
+        <entry key="app/src/main/res/layout/activity_login2.xml" value="0.3740942028985507" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3567708333333333" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.3740942028985507" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.3740942028985507" />
         <entry key="app/src/main/res/layout/fragment_age.xml" value="0.3248407643312102" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.31825273010920435" />

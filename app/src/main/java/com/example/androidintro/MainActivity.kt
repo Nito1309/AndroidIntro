@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onAuthenticationFailed() {
                 super.onAuthenticationFailed()
-                //Toast.makeText(this@MainActivity, "Authentication Failed :(", Toast.LENGTH_SHORT).show()
             }
         })
         promptInfo = BiometricPrompt.PromptInfo.Builder()

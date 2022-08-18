@@ -30,7 +30,7 @@ class AddContactActivity : AppCompatActivity() {
             val etxtAddress = binding.etxtAddress.text.toString()
             val etxtTel = binding.etxtTel.text.toString()
             val data = Intent()
-
+            data.putExtra("requestCode", "1")
             data.putExtra("name", etxtName)
             data.putExtra("email", etxtEmail)
             data.putExtra("birthdate", etxtBirthdate.text.toString())
@@ -38,6 +38,7 @@ class AddContactActivity : AppCompatActivity() {
             data.putExtra("tel", etxtTel)
 
             setResult(Activity.RESULT_OK,data)
+
             finish()
         }
     }

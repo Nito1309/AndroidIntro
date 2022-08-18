@@ -16,6 +16,7 @@ import android.widget.Button
 //import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,10 +40,8 @@ class HomeFragment : Fragment() {
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
             if(it.resultCode == Activity.RESULT_OK){
-                val value = it.data?.getStringExtra("input")
-
-//                when(it.resultCode){
-//                    1 -> {
+                when(it.data?.getStringExtra("requestCode").toString()){
+                    "1" -> {
                         val contact = ContactViewModel(
                             it.data?.getStringExtra("name").toString(),
                             it.data?.getStringExtra("email").toString(),
@@ -51,9 +50,11 @@ class HomeFragment : Fragment() {
                             it.data?.getStringExtra("tel").toString()
                         )
                         addContact(contact)
-                        //Toast.makeText(requireContext(),"hollaaaa", Toast.LENGTH_SHORT).show()
-                   // }
-                //}
+                    }
+                    "2" -> {
+
+                    }
+                }
             }
         }
     // This property is only valid between onCreateView and
@@ -93,17 +94,13 @@ class HomeFragment : Fragment() {
         btnAddContact.setOnClickListener {
             activity?.let {
                 val intent = Intent (context, AddContactActivity::class.java)
-
-                //startActivityForResult(intent, 1)
                 onAddButtonClicked(btnAdd,btnAddContact,btnAddAlarm)
                 getResult.launch(intent)
             }
         }
         btnAddAlarm.setOnClickListener {
             activity?.let {
-               // Toast.makeText(requireContext(), "btnAlarm", Toast.LENGTH_LONG).show()
                 val intent = Intent (context, AlarmActivity::class.java)
-                addClicked = !addClicked
                 onAddButtonClicked(btnAdd,btnAddContact,btnAddAlarm)
                 getResult.launch(intent)
             }
@@ -140,24 +137,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-//    @Deprecated("Deprecated in Java")
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        //super.onActivityResult(requestCode, resultCode, data)
-//        if (resultCode != Activity.RESULT_OK)return
-//        when(requestCode){
-//            1 -> {
-//                val contact = ContactViewModel(
-//                    data?.getStringExtra("name").toString(),
-//                    data?.getStringExtra("email").toString(),
-//                    data?.getStringExtra("birthdate").toString(),
-//                    data?.getStringExtra("address").toString(),
-//                    data?.getStringExtra("tel").toString()
-//                )
-//                addContact(contact)
-//                //Toast.makeText(requireContext(),"hollaaaa", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

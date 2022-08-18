@@ -48,8 +48,8 @@ class AlarmActivity : AppCompatActivity() {
             AlarmManager.RTC_WAKEUP,calendar.timeInMillis,pendingIntent
         )
         Toast.makeText(this,"Alarm set succesfully", Toast.LENGTH_SHORT).show()
-//        setResult(Activity.RESULT_OK,calendar.timeInMillis)
-//        finish()
+        setResult(Activity.RESULT_OK)
+        finish()
     }
 
     private fun cancelAlarm(){
