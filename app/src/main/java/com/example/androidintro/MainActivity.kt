@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.hardware.biometrics.BiometricManager
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 //import android.support.v7.app.AppCompatActivityctivity
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.androidintro.AndroidIntroApplication.Companion.userSession
 import com.example.androidintro.databinding.ActivityMainBinding
 import com.example.androidintro.ui.map.MapFragment
 import java.util.concurrent.Executor
@@ -35,9 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         val navView: com.google.android.material.bottomnavigation.BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-
         navView.setupWithNavController(navController)
         executor = ContextCompat.getMainExecutor(this)
 
@@ -102,9 +102,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.logout -> {
+                userSession.logout()
+                onBackPressed()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onResumeFragments() {
         super.onResumeFragments()
-        //biometricPrompt.authenticate(promptInfo)
+        // biometricPrompt.authenticate(promptInfo)
     }
 
 }
