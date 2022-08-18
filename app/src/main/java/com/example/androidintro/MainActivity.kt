@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.androidintro.AndroidIntroApplication.Companion.contactData
 import com.example.androidintro.AndroidIntroApplication.Companion.userSession
 import com.example.androidintro.databinding.ActivityMainBinding
 import com.example.androidintro.ui.map.MapFragment
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         enableMyLocation()
+        biometricPrompt.authenticate(promptInfo)
     }
 
     private fun isPermissionsGranted() = ContextCompat.checkSelfPermission(
@@ -111,6 +113,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId){
             R.id.logout -> {
                 userSession.logout()
+                //contactData.clear()
                 onBackPressed()
             }
         }

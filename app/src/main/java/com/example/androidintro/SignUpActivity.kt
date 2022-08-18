@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.androidintro.AndroidIntroApplication.Companion.contactData
 import com.example.androidintro.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -16,7 +17,7 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         firebaseAuth = FirebaseAuth.getInstance()
-
+        contactData.clear()
         binding.textView.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

@@ -7,21 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-//import android.support.v4.app.Fragment
-//import android.arch.lifecycle.ViewModelProvider
 import android.content.Intent
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Button
-//import android.support.v7.widget.LinearLayoutManager
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidintro.AddContactActivity
 import com.example.androidintro.AlarmActivity.AlarmActivity
+import com.example.androidintro.AndroidIntroApplication.Companion.contactData
 import com.example.androidintro.R
 import com.example.androidintro.databinding.FragmentHomeBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -29,7 +24,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val contactData = ArrayList<ContactViewModel>()
+    //private val contactData = ArrayList<ContactViewModel>()
+
     private val adapter = ContactRecyclerAdapter(contactData)
     private var addClicked = false
     private val rotateOpen: Animation by lazy { AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_open_anim)}
@@ -63,7 +59,7 @@ class HomeFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun addContact(contact : ContactViewModel){
         contactData.add(contact)
-        adapter.notifyDataSetChanged()
+        adapter.notifyItemInserted(adapter.itemCount)
     }
     override fun onCreateView(
             inflater: LayoutInflater,

@@ -38,7 +38,6 @@ class AddContactActivity : AppCompatActivity() {
             data.putExtra("tel", etxtTel)
 
             setResult(Activity.RESULT_OK,data)
-
             finish()
         }
     }

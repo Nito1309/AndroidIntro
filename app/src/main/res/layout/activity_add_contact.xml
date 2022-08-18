@@ -30,7 +30,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:textSize="20sp"
-            android:fontFamily="sans-serif-condensed" />
+            android:fontFamily="sans-serif-condensed"
+            app:boxStrokeColor="@color/purple_500"
+            android:maxLines="1"
+            android:inputType="textPersonName"
+            />
 
         <EditText
             android:id="@+id/etxtEmail"
@@ -38,6 +42,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            app:boxStrokeColor="@color/purple_500"
+            android:maxLines="1"
+            android:inputType="textEmailAddress"
+            android:focusableInTouchMode="true"
             />
 
         <EditText
@@ -48,6 +56,11 @@
             android:layout_marginTop="30dp"
             android:textSize="20sp"
             android:fontFamily="sans-serif-condensed"
+            app:boxStrokeColor="@color/purple_500"
+            android:maxLines="1"
+            android:inputType="date"
+            android:focusableInTouchMode="true"
+            android:maxLength="8"
             />
 
         <EditText
@@ -58,6 +71,10 @@
             android:textSize="20sp"
             android:layout_marginTop="30dp"
             android:fontFamily="sans-serif-condensed"
+            app:boxStrokeColor="@color/purple_500"
+            android:maxLines="1"
+            android:focusableInTouchMode="true"
+            android:inputType="textPostalAddress"
             />
 
         <EditText
@@ -69,6 +86,10 @@
             android:layout_marginTop="30dp"
             android:fontFamily="sans-serif-condensed"
             android:maxLength="10"
+            app:boxStrokeColor="@color/purple_500"
+            android:maxLines="1"
+            android:inputType="phone"
+            android:focusableInTouchMode="true"
             />
 
         <Button
@@ -85,6 +106,7 @@
             android:fontFamily="sans-serif-condensed"
             android:textSize="20sp"
             android:textAllCaps="false"
+            android:focusableInTouchMode="true"
             />
 
     </LinearLayout>
